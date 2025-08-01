@@ -1,5 +1,6 @@
 import CustomButton from '@/components/CustomButton';
 import CustomInput from '@/components/CustomInput';
+import { createUser } from '@/lib/appwrite';
 import { Link, router } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
@@ -7,17 +8,20 @@ import { Alert, Text, View } from 'react-native';
 const SignUp = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [form, setForm] = useState({ name: '', email: '', password: '' });
+
     const submit = async () => {
-        if (!form.email || !form.password || !form.name) {
+        const { name, email, password } = form;
+
+        if (!email || !password || !name) {
             return Alert.alert('Error', 'PLease check missing Field!');
         }
 
         setIsSubmitting(true);
         try {
             // appwrite sign up function
-            //
+            await createUser({ email, password, name });
 
-            Alert.alert('Success', 'Sign Up Successfully');
+            // Alert.alert('Success', 'Sign Up Successfully');
             router.replace('/');
         } catch (error: any) {
             Alert.alert('Error', error.message);
@@ -64,10 +68,7 @@ const SignUp = () => {
                 <Text className="base-regular text-gray-100">
                     Already have account?
                 </Text>
-                <Link
-                    href={'/(auth)/sign-in'}
-                    className="base-bold text-primary"
-                >
+                <Link href="/(tabs)/profile" className="base-bold text-primary">
                     Sign In
                 </Link>
             </View>
