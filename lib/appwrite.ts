@@ -13,7 +13,12 @@ export const appwriteConfig = {
     endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!,
     platform: 'com.Ryan.FoodDeli',
     databaseId: '688b23e7000130eb9bed',
+    bucketId: '6890ff0a000210f50d2a',
     userCollectionId: '688b24d40037681973f5',
+    categoriesCollectionId: '6890f99d0012bbc3b1e0',
+    menuCollectionId: '6890fa55000801f5f3d1',
+    customizationCollectionId: '6890fc20003794a289e2',
+    menuCustomizationCollectionId: '6890fd490025f251d475',
 };
 
 export const client = new Client();
