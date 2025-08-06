@@ -116,6 +116,9 @@ async function seed(): Promise<void> {
         );
         customizationMap[cus.name] = doc.$id;
     }
+    console.log('cheeck herer');
+    console.log('customnationMap', customizationMap);
+    console.log('catemap', categoryMap);
 
     // 4. Create Menu Items
     const menuMap: Record<string, string> = {};
@@ -137,7 +140,7 @@ async function seed(): Promise<void> {
                 categories: categoryMap[item.category_name],
             }
         );
-        console.log('cheeck herer');
+
         menuMap[item.name] = doc.$id;
 
         // 5. Create menu_customizations
